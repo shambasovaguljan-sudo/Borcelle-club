@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BORCELLE CLUB</title>
+<meta name="theme-color" content="#f6f3ee">
+<style>
+:root{--bg:#f6f3ee;--w:#fffdf9;--k:#0c0a0a;--c:#1d1a1a;--b:#6d1220;--r:#a3283a;--m:#7b7471;--ln:rgba(12,10,10,.1);--e:cubic-bezier(.22,.8,.2,1);--sh:0 1px 0 rgba(255,255,255,.8) inset,0 24px 60px -24px rgba(40,10,15,.35),0 2px 6px rgba(0,0,0,.05)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--k);font:15px/1.55 Inter,-apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+img{display:block;max-width:100%}
+.sec{padding:clamp(72px,12vw,150px) clamp(20px,5vw,64px);max-width:1280px;margin:auto}
+.dark{background:var(--k);color:#f3eeea;max-width:none;padding:0}
+.dark>.in{max-width:1280px;margin:auto;padding:clamp(72px,12vw,150px) clamp(20px,5vw,64px)}
+.lab{font-size:12px;letter-spacing:.14em;color:var(--m);margin-bottom:22px}
+.dark .lab{color:#9a8f8c}
+h2{font-size:clamp(38px,7.2vw,92px);line-height:.96;letter-spacing:-.045em;font-weight:700;max-width:14ch}
+p.lead{max-width:44ch;color:var(--m);margin-top:24px;font-size:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:99px;background:var(--b);color:#fff;font-weight:600;font-size:14px;letter-spacing:.02em;transition:.5s var(--e);box-shadow:0 12px 30px -10px rgba(109,18,32,.6)}
+.btn:hover{background:var(--r);transform:translateY(-2px)}
+.btn.g{background:transparent;color:inherit;border:1px solid var(--ln);box-shadow:none}
+.btn.g:hover{background:rgba(127,127,127,.12)}
+.btn.on{background:var(--c);box-shadow:none}
+.card{background:var(--w);border:1px solid var(--ln);border-radius:30px;box-shadow:var(--sh)}
+.ph{background-size:cover;background-position:center;background-color:#2a1418}
+.rv{opacity:0;transform:translateY(34px);filter:blur(8px);transition:1.1s var(--e)}
+.rv.in2{opacity:1;transform:none;filter:none}
+nav{position:fixed;top:max(12px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:50;width:min(1080px,calc(100% - 24px));height:56px;padding:0 10px 0 22px;display:flex;align-items:center;justify-content:space-between;border-radius:99px;background:rgba(255,253,249,.66);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border:1px solid rgba(12,10,10,.08);box-shadow:0 10px 30px -14px rgba(0,0,0,.25)}
+.logo{font-weight:800;letter-spacing:.18em;font-size:14px}
+.links{display:flex;gap:30px;font-size:12px;letter-spacing:.1em;font-weight:500}
+.links a{opacity:.65;transition:.4s}.links a:hover{opacity:1}
+.nr{display:flex;align-items:center;gap:8px}
+.ig{width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+.ig svg{width:19px;height:19px}
+.pb{height:40px;min-width:40px;border-radius:99px;background:var(--k);color:#fff;font-size:12px;letter-spacing:.1em;font-weight:600;display:flex;align-items:center;gap:8px;padding:0 16px}
+.av{width:32px;height:32px;border-radius:50%;background:var(--b) center/cover;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;flex:none}
+.pb .av{margin-left:-10px;width:30px;height:30px;border:2px solid var(--k)}
+.mb{display:none;width:40px;height:40px;border-radius:50%;position:relative}
+.mb i{position:absolute;left:12px;right:12px;height:1.5px;background:var(--k);transition:.4s var(--e)}
+.mb i:nth-child(1){top:16px}.mb i:nth-child(2){top:23px}
+.mb.o i:nth-child(1){top:20px;transform:rotate(45deg)}.mb.o i:nth-child(2){top:20px;transform:rotate(-45deg)}
+#menu{position:fixed;inset:0;z-index:40;background:var(--k);color:#fff;padding:110px 28px 40px;display:flex;flex-direction:column;gap:6px;opacity:0;pointer-events:none;transition:.6s var(--e)}
+#menu.o{opacity:1;pointer-events:auto}
+#menu a{font-size:44px;font-weight:700;letter-spacing:-.04em;padding:6px 0}
+#menu small{margin-top:auto;color:#9a8f8c}
+.hero{position:relative;min-height:100svh;padding:120px clamp(20px,5vw,64px) 60px;max-width:1280px;margin:auto;display:flex;flex-direction:column;justify-content:flex-end}
+.eb{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.14em;color:var(--m);margin-bottom:18px;gap:12px;flex-wrap:wrap}
+.hero h1{font-size:clamp(64px,17.5vw,260px);line-height:.82;letter-spacing:-.07em;font-weight:800;position:relative;z-index:3;margin-bottom:-.12em}
+.hero h1 span{display:block;color:var(--b)}
+.stage{position:relative;height:clamp(420px,62vw,680px);border-radius:36px;overflow:hidden;box-shadow:0 50px 90px -40px rgba(40,5,12,.6);z-index:1}
+.stage .ph{position:absolute;inset:-6% 0;background-image:linear-gradient(180deg,rgba(12,10,10,.1),rgba(60,8,18,.55)),url(https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1800&q=70),linear-gradient(135deg,#3a1018,#0c0a0a)}
+.tag{position:absolute;left:clamp(18px,4vw,48px);top:clamp(18px,4vw,44px);color:#fff;max-width:14ch;font-size:clamp(26px,4.4vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.fl{position:absolute;background:rgba(255,253,249,.72);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border:1px solid rgba(255,255,255,.55);border-radius:26px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.9) inset;padding:18px}
+.f1{right:clamp(14px,4vw,48px);bottom:clamp(14px,4vw,48px);width:min(290px,70%)}
+.f2{left:clamp(14px,4vw,48px);bottom:clamp(14px,4vw,48px);width:min(230px,50%);background:rgba(12,10,10,.6);color:#fff;border-color:rgba(255,255,255,.14)}
+.f3{right:clamp(14px,6vw,90px);top:clamp(14px,4vw,44px);width:200px;display:none}
+.mini{display:flex;align-items:center;gap:12px}
+.mini b{display:block;font-size:15px;letter-spacing:-.02em}.mini small{font-size:11px;color:var(--m)}
+.bar{height:5px;border-radius:9px;background:rgba(12,10,10,.1);margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--b);border-radius:9px;transition:1.2s var(--e)}
+.hb{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;align-items:center}
+.ab{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(30px,6vw,90px);align-items:end}
+.ab h2{max-width:11ch}
+.tri{display:grid;margin-top:34px}
+.tri div{padding:18px 0;border-top:1px solid var(--ln);display:flex;justify-content:space-between;font-size:clamp(22px,3vw,34px);font-weight:700;letter-spacing:-.04em}
+.tri small{font-size:13px;font-weight:400;letter-spacing:0;color:var(--m);align-self:center;text-align:right;max-width:20ch}
+.og{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
+.op{position:relative;overflow:hidden;border-radius:30px;min-height:260px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;isolation:isolate;box-shadow:var(--sh)}
+.op .ph{position:absolute;inset:0;z-index:-2;transition:transform 1.4s var(--e)}
+.op:hover .ph{transform:scale(1.05)}
+.op:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,10,10,0) 20%,rgba(12,10,10,.82))}
+.op h3{font-size:24px;letter-spacing:-.04em;line-height:1.05}
+.op p{font-size:13px;opacity:.75;margin:8px 0 16px;max-width:34ch}
+.op .btn{align-self:flex-start;min-height:44px;padding:0 18px;font-size:13px;background:rgba(255,253,249,.92);color:var(--k);box-shadow:none}
+.op .btn.on{background:var(--b);color:#fff}
+.op:nth-child(1){grid-column:span 4;grid-row:span 2;min-height:520px}.op:nth-child(1) h3{font-size:clamp(34px,5vw,64px)}
+.op:nth-child(2),.op:nth-child(3){grid-column:span 2}
+.op:nth-child(4){grid-column:span 3}.op:nth-child(5){grid-column:span 3}
+.op:nth-child(6){grid-column:span 6;min-height:220px}
+.xp{position:absolute;top:20px;right:20px;font-size:11px;letter-spacing:.1em;padding:7px 12px;border-radius:99px;background:rgba(255,253,249,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25)}
+.poster{display:grid;grid-template-columns:1.1fr 1fr;border-radius:36px;overflow:hidden;border:1px solid rgba(255,255,255,.1);margin-top:50px;box-shadow:0 60px 100px -50px #000}
+.pl{padding:clamp(24px,4vw,56px);background:radial-gradient(120% 90% at 0 0,#8a1727,#3d0910 70%);display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:520px}
+.pl .dt{font-size:clamp(90px,16vw,210px);font-weight:800;letter-spacing:-.08em;line-height:.8}
+.pl .mo{font-size:clamp(18px,2.4vw,28px);letter-spacing:.06em;font-weight:600;margin-top:12px}
+.pl h3{font-size:clamp(26px,3.6vw,46px);letter-spacing:-.04em;line-height:1}
+.pr{position:relative;min-height:340px}
+.pr .ph{position:absolute;inset:0;background-image:linear-gradient(0deg,rgba(12,10,10,.7),rgba(12,10,10,0) 55%),url(https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=70),linear-gradient(135deg,#2a1418,#0c0a0a)}
+.pr dl{position:absolute;left:0;right:0;bottom:0;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pr dt{font-size:11px;letter-spacing:.12em;color:#c9bfbb}.pr dd{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.st{display:inline-flex;gap:8px;align-items:center;font-size:12px;letter-spacing:.1em}
+.st:before{content:"";width:7px;height:7px;border-radius:50%;background:#ff6b7d;box-shadow:0 0 0 4px rgba(255,107,125,.25)}
+.pg{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,5vw,70px);align-items:start;margin-top:56px}
+.pc{padding:clamp(22px,3vw,36px);position:sticky;top:90px}
+.pt{display:flex;gap:18px;align-items:center}
+.big{width:96px;height:96px;font-size:34px}
+.pc h3{font-size:28px;letter-spacing:-.04em;line-height:1.05}
+.pc small{color:var(--m)}
+.lv{margin:28px 0 8px;display:flex;justify-content:space-between;align-items:baseline}
+.lv b{font-size:54px;letter-spacing:-.06em;line-height:1}
+.stt{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.stt div{background:var(--bg);border-radius:20px;padding:14px;border:1px solid var(--ln)}
+.stt b{display:block;font-size:28px;letter-spacing:-.05em}.stt small{font-size:10px;letter-spacing:.1em}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}
+.chips span{font-size:12px;padding:6px 12px;border-radius:99px;border:1px solid var(--ln)}
+.ach{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bd{padding:22px;border-radius:26px;background:var(--w);border:1px solid var(--ln);transition:.7s var(--e)}
+.bd.lk{opacity:.5}.bd.lk .ic{background:#e7e1da;color:#8a817d;box-shadow:none}
+.ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--r),var(--b));color:#fff;box-shadow:0 10px 24px -8px rgba(109,18,32,.7),0 1px 0 rgba(255,255,255,.35) inset;margin-bottom:16px}
+.ic svg{width:22px;height:22px}
+.bd h4{font-size:15px;letter-spacing:.1em}.bd p{font-size:13px;color:var(--m);margin-top:4px}
+.ach .bd:first-child{grid-column:span 2}
+.cg{display:flex;gap:16px;margin-top:56px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 30px;scrollbar-width:none}
+.cg::-webkit-scrollbar{display:none}
+.mem{flex:none;width:min(300px,76vw);scroll-snap-align:start;height:400px;border-radius:30px;overflow:hidden;position:relative;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;box-shadow:0 30px 60px -30px #000;isolation:isolate}
+.mem .ph{position:absolute;inset:0;z-index:-2}
+.mem:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(12,10,10,.85),rgba(12,10,10,0) 60%)}
+.mem h4{font-size:26px;letter-spacing:-.04em}.mem p{font-size:13px;opacity:.75}
+.mem .lvt{position:absolute;top:18px;left:18px;font-size:11px;letter-spacing:.1em;padding:7px 12px;border-radius:99px;background:rgba(255,253,249,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.hw{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:1px solid var(--ln)}
+.hw div{padding:28px 24px 10px 0}
+.hw b{font-size:13px;letter-spacing:.12em;color:var(--b)}
+.hw h3{font-size:clamp(24px,2.8vw,34px);letter-spacing:-.04em;margin:34px 0 8px;line-height:1}
+.hw p{color:var(--m);font-size:14px;max-width:24ch}
+.cta{position:relative;text-align:center;padding:clamp(110px,18vw,240px) 24px;color:#fff;overflow:hidden;isolation:isolate}
+.cta .ph{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(0deg,rgba(60,8,18,.8),rgba(12,10,10,.8)),url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=70),linear-gradient(135deg,#3a1018,#0c0a0a)}
+.cta h2{margin:auto;max-width:11ch;font-size:clamp(48px,11vw,160px)}
+.cta .row{justify-content:center;margin-top:36px}
+footer{padding:70px clamp(20px,5vw,64px) 40px;max-width:1280px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer .logo{font-size:20px;margin-bottom:10px}
+footer p,footer a{color:var(--m);font-size:14px;display:block;margin-bottom:8px}
+footer a:hover{color:var(--k)}
+footer h5{font-size:11px;letter-spacing:.14em;margin-bottom:14px}
+.cp{grid-column:1/-1;border-top:1px solid var(--ln);padding-top:24px;font-size:12px;color:var(--m)}
+#ob{position:fixed;inset:0;z-index:100;background:var(--k);color:#f3eeea;display:none;flex-direction:column;padding:max(24px,env(safe-area-inset-top)) clamp(22px,6vw,80px) max(24px,env(safe-area-inset-bottom))}
+#ob.o{display:flex}
+#ob:before{content:"";position:absolute;inset:0;background:radial-gradient(80% 60% at 80% 100%,rgba(138,23,39,.55),transparent 70%);pointer-events:none}
+.ot{display:flex;justify-content:space-between;align-items:center;position:relative}
+.dots{display:flex;gap:6px}.dots i{width:22px;height:3px;border-radius:3px;background:#3a3434;transition:.6s var(--e)}.dots i.a{background:var(--r);width:34px}
+.stp{flex:1;display:none;flex-direction:column;justify-content:center;position:relative;max-width:760px;width:100%;margin:auto}
+.stp.a{display:flex;animation:in .9s var(--e)}
+@keyframes in{from{opacity:0;transform:translateY(24px);filter:blur(8px)}}
+.stp small{letter-spacing:.14em;font-size:12px;color:#9a8f8c;margin-bottom:18px}
+.stp h2{font-size:clamp(40px,9vw,96px);max-width:none}
+.stp input[type=text]{margin-top:34px;width:100%;background:none;border:0;border-bottom:1px solid #4a4141;color:#fff;font:600 clamp(28px,6vw,52px) Inter,sans-serif;letter-spacing:-.04em;padding:10px 0;outline:0;border-radius:0}
+.stp input[type=text]:focus{border-color:var(--r)}
+.err{color:#ff8b9a;font-size:13px;min-height:20px;margin-top:10px}
+.up{margin-top:30px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.up .big{width:130px;height:130px;font-size:44px;border:1px solid #4a4141;background-color:#1d1a1a}
+.int{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.int button{padding:12px 20px;min-height:44px;border-radius:99px;border:1px solid #4a4141;font-size:15px;transition:.5s var(--e)}
+.int button.on{background:var(--b);border-color:var(--b);color:#fff}
+.of{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.of .btn.g{color:#fff;border-color:#4a4141}
+.hid{display:none}
+#toast{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translate(-50%,30px);background:var(--k);color:#fff;padding:13px 22px;border-radius:99px;font-size:13px;z-index:120;opacity:0;transition:.7s var(--e);pointer-events:none;max-width:92vw;box-shadow:0 20px 40px -10px rgba(0,0,0,.5)}
+#toast.o{opacity:1;transform:translate(-50%,0)}
+@media(min-width:900px){.f3{display:block}}
+@media(max-width:860px){
+.links,.ig.d,.pb span{display:none}.mb{display:block}.pb{padding:0;background:none;min-width:0}.pb .av{margin:0;border:0;width:40px;height:40px}
+.ab,.pg,.poster,footer{grid-template-columns:1fr}
+.og{grid-template-columns:1fr 1fr}.op:nth-child(n){grid-column:span 2;min-height:300px}.op:nth-child(1){min-height:440px}.op:nth-child(2),.op:nth-child(3){grid-column:span 1;min-height:260px}.op:nth-child(6){min-height:240px}
+.op:nth-child(2) p,.op:nth-child(3) p{display:none}
+.pc{position:static}.hw{grid-template-columns:1fr 1fr}.hw div{padding-right:14px}
+.hero{padding-top:100px}.pl{min-height:440px}
+.eb span:last-child{display:none}
+}
+@media(max-width:430px){.ach{grid-template-columns:1fr}.ach .bd:first-child{grid-column:auto}.op:nth-child(2),.op:nth-child(3){grid-column:span 2}.op:nth-child(2) p,.op:nth-child(3) p{display:block}.hw{grid-template-columns:1fr}.stt b{font-size:24px}.f2{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}}
+:focus-visible{outline:2px solid var(--r);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div id="ob" role="dialog" aria-label="Create your member profile">
+  <div class="ot"><span class="logo">BORCELLE</span><div class="dots" id="dots"><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="stp a"><small>WELCOME TO BORCELLE</small><h2>What should we call you?</h2><input type="text" id="iN" maxlength="30" placeholder="Your name" autocomplete="name"><div class="err" id="eN"></div></div>
+  <div class="stp"><small>YOUR USERNAME</small><h2>Pick a handle.</h2><input type="text" id="iU" maxlength="20" placeholder="username" autocapitalize="none" autocorrect="off" spellcheck="false"><div class="err" id="eU"></div></div>
+  <div class="stp"><small>PROFILE PHOTO</small><h2>Put a face to the name.</h2>
+    <div class="up"><div class="av big" id="oAv">+</div><div><label class="btn g">Choose photo<input class="hid" type="file" accept="image/*" id="oF"></label><p style="color:#9a8f8c;font-size:13px;margin-top:10px">Optional. Saved only on this device.</p></div></div></div>
+  <div class="stp"><small>WHAT ARE YOU INTO?</small><h2>Choose your lanes.</h2><div class="int" id="int"></div></div>
+  <div class="stp"><small>YOU'RE IN</small><h2>Welcome to BORCELLE.</h2><p class="lead" style="color:#a79d9a">Your profile is ready. Join an opportunity, earn XP, and build your record.</p></div>
+  <div class="of"><button class="btn g" id="bk">Back</button><button class="btn" id="nx">Continue</button></div>
+</div>
+
+<nav>
+  <a href="#top" class="logo">BORCELLE</a>
+  <div class="links"><a href="#opportunities">OPPORTUNITIES</a><a href="#events">EVENTS</a><a href="#community">COMMUNITY</a><a href="#profile">PROFILE</a></div>
+  <div class="nr">
+    <a class="ig d" href="https://www.instagram.com/borcelle.ala?stkn=MTBvNWVvN3Z3MmZlag%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram @borcelle.ala"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor"/></svg></a>
+    <a class="pb" href="#profile" aria-label="Profile"><span>PROFILE</span><div class="av nAv"></div></a>
+    <button class="mb" id="mb" aria-label="Menu"><i></i><i></i></button>
+  </div>
+</nav>
+<div id="menu"><a href="#opportunities">Opportunities</a><a href="#events">Events</a><a href="#community">Community</a><a href="#profile">Profile</a><a href="https://www.instagram.com/borcelle.ala?stkn=MTBvNWVvN3Z3MmZlag%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a><small>@borcelle.ala</small></div>
+
+<header class="hero" id="top">
+  <div class="eb"><span>PRIVATE YOUTH COMMUNITY</span><span>ALMATY / GLOBAL</span></div>
+  <h1>BORCELLE<span>CLUB</span></h1>
+  <div class="stage">
+    <div class="ph" id="par"></div>
+    <div class="tag">Build what comes next.</div>
+    <div class="fl f3"><small style="font-size:11px;letter-spacing:.12em;color:var(--m)">NEXT UP</small><b style="display:block;font-size:17px;letter-spacing:-.03em;margin-top:4px">Borcelle Championship</b><small style="color:var(--m)">Oct 24–25 · Almaty</small></div>
+    <div class="fl f2"><small style="font-size:11px;letter-spacing:.12em;opacity:.7">ACHIEVEMENT</small><b style="display:block;font-size:20px;letter-spacing:-.03em;margin-top:4px">First Step</b><small style="opacity:.7">First BORCELLE event</small></div>
+    <div class="fl f1"><div class="mini"><div class="av nAv" style="width:48px;height:48px;font-size:17px"></div><div><b class="nName">Your name</b><small>BORCELLE MEMBER · Almaty</small></div></div><div class="bar"><i class="xbar"></i></div><div style="display:flex;justify-content:space-between;font-size:12px;margin-top:8px"><span>LEVEL <b class="nLv">01</b></span><span><b class="nXp">0</b> XP</span></div></div>
+  </div>
+  <div class="hb"><a class="btn" href="#opportunities">Explore opportunities</a><a class="btn g" href="#profile">Open my profile</a></div>
+</header>
+
+<section class="sec ab" id="about">
+  <div class="rv"><div class="lab">00 / WHAT IS BORCELLE</div><h2>Not a feed. A trajectory.</h2></div>
+  <div class="rv"><p class="lead" style="margin-top:0">BORCELLE is a private community where ambitious teenagers find real stages, meet people who push back, and keep a record of everything they finish. Every event adds to your profile. Every profile adds to the room.</p>
+    <div class="tri"><div>Build.<small>Projects, teams, portfolio</small></div><div>Connect.<small>People worth knowing</small></div><div>Compete.<small>Championships and conferences</small></div></div></div>
+</section>
+
+<section class="sec" id="opportunities">
+  <div class="rv"><div class="lab">01 / OPPORTUNITIES</div><h2>Opportunities, worth leaving the screen for.</h2></div>
+  <div class="og" id="og"></div>
+</section>
+
+<section class="dark" id="events"><div class="in">
+  <div class="rv"><div class="lab">02 / EVENTS</div><h2>One weekend. One city. Everyone in the room.</h2></div>
+  <div class="poster rv">
+    <div class="pl"><div><span class="st">REGISTRATION OPEN</span></div><div><div class="dt">24—25</div><div class="mo">OCTOBER 2026 · ALMATY</div></div>
+      <div><h3>BORCELLE<br>CHAMPIONSHIP</h3><div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap"><button class="btn" id="evB" style="background:#f3eeea;color:var(--k);box-shadow:none">Register · +100 XP</button><a class="btn g" href="#profile" style="color:#fff;border-color:rgba(255,255,255,.25)">See my profile</a></div></div></div>
+    <div class="pr"><div class="ph"></div><dl><div><dt>LOCATION</dt><dd>Almaty, Kazakhstan</dd></div><div><dt>CATEGORY</dt><dd>Competition</dd></div><div><dt>PARTICIPANTS</dt><dd>240 members</dd></div><div><dt>FORMAT</dt><dd>Teams of four</dd></div></dl></div>
+  </div>
+</div></section>
+
+<section class="sec" id="profile">
+  <div class="rv"><div class="lab">03 / MEMBER PROFILE</div><h2>Your record. Always on you.</h2></div>
+  <div class="pg">
+    <div class="card pc rv">
+      <div class="pt"><div class="av big nAv"></div><div><h3 class="nName">Your name</h3><small>@<span class="nUser">username</span> · BORCELLE MEMBER</small><br><small>ALMATY, KAZAKHSTAN</small></div></div>
+      <div class="lv"><div><small style="letter-spacing:.12em;font-size:11px">LEVEL</small><br><b class="nLv">01</b></div><div style="text-align:right"><b style="font-size:26px;letter-spacing:-.04em" class="nXp">0</b> <small>XP</small><br><small id="nRank">NEWCOMER</small></div></div>
+      <div class="bar"><i class="xbar"></i></div><small id="nxt" style="display:block;margin-top:8px"></small>
+      <div class="stt"><div><b id="sA">0</b><small>ACHIEVEMENTS</small></div><div><b id="sE">0</b><small>EVENTS</small></div><div><b id="sP">0</b><small>PORTFOLIO</small></div></div>
+      <div class="row"><button class="btn" id="edit">Edit profile</button><label class="btn g">Change photo<input class="hid" type="file" accept="image/*" id="pF"></label></div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="rv"><div class="lab">04 / ACHIEVEMENTS</div><div class="ach" id="ach"></div></div>
+  </div>
+</section>
+
+<section class="dark" id="community"><div class="in">
+  <div class="rv"><div class="lab">05 / COMMUNITY</div><h2>Meet people who are building something.</h2></div>
+  <div class="cg rv" id="cg"></div>
+</div></section>
+
+<section class="sec" id="how">
+  <div class="rv"><div class="lab">06 / HOW IT WORKS</div><h2>Four moves. Then repeat.</h2></div>
+  <div class="hw rv"><div><b>01</b><h3>Join</h3><p>Create your member profile in under a minute.</p></div><div><b>02</b><h3>Show up</h3><p>Pick opportunities and events that fit your lanes.</p></div><div><b>03</b><h3>Earn</h3><p>Every finish adds XP and unlocks achievements.</p></div><div><b>04</b><h3>Level up</h3><p>Your portfolio grows. So does your rank.</p></div></div>
+</section>
+
+<section class="cta">
+  <div class="ph"></div>
+  <h2 class="rv">Your next chapter starts here.</h2>
+  <div class="row"><a class="btn" href="#opportunities" style="background:#f3eeea;color:var(--k);box-shadow:none">Find your first one</a><a class="btn g" style="color:#fff;border-color:rgba(255,255,255,.3)" href="https://www.instagram.com/borcelle.ala?stkn=MTBvNWVvN3Z3MmZlag%3D%3D&utm_source=qr" target="_blank" rel="noopener">@borcelle.ala</a></div>
+</section>
+
+<footer>
+  <div><div class="logo">BORCELLE CLUB</div><p>A private community for ambitious young people.</p><p>Almaty / Kazakhstan</p><a href="https://www.instagram.com/borcelle.ala?stkn=MTBvNWVvN3Z3MmZlag%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram · @borcelle.ala</a></div>
+  <div><h5>EXPLORE</h5><a href="#opportunities">Opportunities</a><a href="#events">Events</a><a href="#community">Community</a><a href="#profile">Profile</a></div>
+  <div><h5>MEMBER</h5><a href="#profile" id="fOut">Reset my progress</a></div>
+  <div class="cp">© 2026 BORCELLE CLUB</div>
+</footer>
+<div id="toast"></div>
+
+<script>
+(function(){
+var KEY='borcelle_v1',$=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
+var S=load();
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d&&d.done)return d}catch(e){}return{done:false,name:'',user:'',photo:'',interests:[],xp:0,opps:[],events:[],portfolio:[]}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('Storage is full. Try a smaller photo.')}}
+var IMG='https://images.unsplash.com/';
+var OPPS=[
+{id:'competitions',t:'Competitions',d:'Debate, case, and design battles against the best in the region.',x:150,i:'photo-1517048676732-d65bc937f952'},
+{id:'conferences',t:'Conferences',d:'Delegate seats at MUN and policy forums.',x:100,i:'photo-1540575467063-178a50c2df87'},
+{id:'leadership',t:'Leadership',d:'Run a team. Own an outcome.',x:120,i:'photo-1523240795612-9a054b0db644'},
+{id:'education',t:'Education',d:'Short intensives with people who do the work.',x:80,i:'photo-1529156069898-49953e39b3ac'},
+{id:'volunteering',t:'Volunteering',d:'Show up for the city. Log the hours.',x:60,i:'photo-1517048676732-d65bc937f952'},
+{id:'projects',t:'Projects',d:'Start something with a small team and ship it by the end of the season.',x:200,i:'photo-1540575467063-178a50c2df87'}];
+var IC={s:'<path d="M5 12l5 5L19 7"/>',d:'<path d="M4 20h16M6 20V10l6-6 6 6v10"/>',b:'<path d="M4 20l7-7M14 4l6 6-8 8-6-6z"/>',l:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>',c:'<path d="M7 4h10v5a5 5 0 01-10 0zM12 14v5M8 20h8"/>'};
+var ACH=[
+{id:'s',n:'FIRST STEP',d:'First BORCELLE event',f:function(){return S.events.length>=1}},
+{id:'d',n:'DELEGATE',d:'Participated in a conference',f:function(){return S.opps.indexOf('conferences')>-1}},
+{id:'b',n:'BUILDER',d:'Created a project',f:function(){return S.opps.indexOf('projects')>-1}},
+{id:'l',n:'LEADER',d:'Led a team',f:function(){return S.opps.indexOf('leadership')>-1}},
+{id:'c',n:'CHALLENGER',d:'Completed 5 challenges',f:function(){return S.opps.length>=5}}];
+var MEM=[
+{n:'Amina',t:'Leadership · MUN · Debate',l:9,i:'photo-1529156069898-49953e39b3ac',g:'#5a1420'},
+{n:'Daniyar',t:'Business · Finance · Startups',l:7,i:'photo-1540575467063-178a50c2df87',g:'#1d1a1a'},
+{n:'Mira',t:'Design · Fashion · Creative Direction',l:8,i:'photo-1523240795612-9a054b0db644',g:'#3d0910'},
+{n:'Timur',t:'Technology · Science · Robotics',l:6,i:'photo-1517048676732-d65bc937f952',g:'#2a1418'}];
+function bg(i,g){return'background-image:url('+IMG+i+'?auto=format&fit=crop&w=900&q=70),linear-gradient(135deg,'+g+',#0c0a0a)'}
+var G=['#5a1420','#1d1a1a','#3d0910','#2a1418','#6d1220','#0c0a0a'];
+$('#og').innerHTML=OPPS.map(function(o,k){return'<article class="op rv"><div class="ph" style="'+bg(o.i,G[k])+'"></div><span class="xp">+'+o.x+' XP</span><h3>'+o.t+'</h3><p>'+o.d+'</p><button class="btn" data-o="'+o.id+'"></button></article>'}).join('');
+$('#cg').innerHTML=MEM.map(function(m){return'<article class="mem"><div class="ph" style="'+bg(m.i,m.g)+'"></div><span class="lvt">LEVEL 0'+m.l+'</span><h4>'+m.n+'</h4><p>'+m.t+'</p></article>'}).join('');
+$('#ach').innerHTML=ACH.map(function(a){return'<div class="bd" data-a="'+a.id+'"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+IC[a.id]+'</svg></div><h4>'+a.n+'</h4><p>'+a.d+'</p></div>'}).join('');
+$('#int').innerHTML=['Leadership','Business','Debate','Design','Technology','Politics','Languages','Fashion','Science'].map(function(x){return'<button type="button">'+x+'</button>'}).join('');
+function pad(n){return n<10?'0'+n:''+n}
+function lvl(){return Math.floor(S.xp/200)+1}
+function rank(){var l=lvl();return l>=8?'LEADER':l>=5?'BUILDER':l>=2?'MEMBER':'NEWCOMER'}
+function ini(){return(S.name||'B').trim().charAt(0).toUpperCase()}
+function toast(t){var e=$('#toast');e.textContent=t;e.classList.add('o');clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove('o')},2600)}
+function setAv(el,p,i){el.style.backgroundImage=p?'url('+p+')':'';el.textContent=p?'':i}
+function render(){
+  var l=lvl(),inL=S.xp%200,done=ACH.filter(function(a){return a.f()}).length;
+  $$('.nName').forEach(function(e){e.textContent=S.name||'Your name'});
+  $$('.nUser').forEach(function(e){e.textContent=S.user||'username'});
+  $$('.nLv').forEach(function(e){e.textContent=pad(l)});
+  $$('.nXp').forEach(function(e){e.textContent=S.xp.toLocaleString('en-US')});
+  $$('.nAv').forEach(function(e){setAv(e,S.photo,ini())});
+  $$('.xbar').forEach(function(e){e.style.width=(inL/2)+'%'});
+  $('#nRank').textContent=rank();$('#nxt').textContent=(200-inL)+' XP to level '+pad(l+1);
+  $('#sA').textContent=done;$('#sE').textContent=S.events.length;$('#sP').textContent=S.opps.length+S.events.length+S.portfolio.length;
+  $('#chips').innerHTML=S.interests.map(function(x){return'<span>'+x+'</span>'}).join('');
+  $$('.bd').forEach(function(b){var a=ACH.filter(function(x){return x.id===b.dataset.a})[0];b.classList.toggle('lk',!a.f())});
+  $$('[data-o]').forEach(function(b){var on=S.opps.indexOf(b.dataset.o)>-1;b.classList.toggle('on',on);b.textContent=on?'Completed ✓':'Mark as done'});
+  $('#evB').textContent=S.events.length?'Registered ✓':'Register · +100 XP';
+}
+document.addEventListener('click',function(e){
+  var o=e.target.closest('[data-o]');
+  if(o){var id=o.dataset.o,op=OPPS.filter(function(x){return x.id===id})[0],i=S.opps.indexOf(id);
+    if(i<0){S.opps.push(id);S.xp+=op.x;toast(op.t+' completed · +'+op.x+' XP')}else{S.opps.splice(i,1);S.xp=Math.max(0,S.xp-op.x);toast('Removed '+op.t)}
+    save();render()}
+});
+$('#evB').onclick=function(){var i=S.events.indexOf('champ');
+  if(i<0){S.events.push('champ');S.xp+=100;toast('Registered · +100 XP')}else{S.events.splice(i,1);S.xp=Math.max(0,S.xp-100);toast('Registration cancelled')}
+  save();render()};
+$('#fOut').onclick=function(){if(confirm('Reset your profile and progress on this device?')){try{localStorage.removeItem(KEY)}catch(x){}location.reload()}};
+function readPhoto(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var s=480,w=im.width,h=im.height,m=Math.min(w,h),k=Math.min(1,s/m),c=document.createElement('canvas');c.width=c.height=Math.round(m*k);c.getContext('2d').drawImage(im,(w-m)/2,(h-m)/2,m,m,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.85))};im.onerror=function(){toast('Could not read that image.')};im.src=r.result};r.readAsDataURL(f)}
+$('#pF').onchange=function(e){readPhoto(e.target.files[0],function(d){S.photo=d;save();render();toast('Photo updated')});e.target.value=''};
+var tmp='';
+$('#oF').onchange=function(e){readPhoto(e.target.files[0],function(d){tmp=d;setAv($('#oAv'),d,'+');show(2)});e.target.value=''};
+var step=0,ob=$('#ob'),picks=[];
+function show(n){step=n;$$('.stp').forEach(function(s,i){s.classList.toggle('a',i===n)});$$('#dots i').forEach(function(d,i){d.classList.toggle('a',i<=n)});
+  $('#bk').style.visibility=n===0||n===4?'hidden':'visible';$('#nx').textContent=n===4?'Join BORCELLE':n===2&&!tmp?'Skip':'Continue';
+  var f=$('.stp.a input[type=text]');if(f)setTimeout(function(){f.focus()},350)}
+function openOb(edit){ob.classList.add('o');document.body.style.overflow='hidden';
+  $('#iN').value=edit?S.name:'';$('#iU').value=edit?S.user:'';tmp=edit?S.photo:'';picks=edit?S.interests.slice():[];setAv($('#oAv'),tmp,'+');
+  $$('#int button').forEach(function(b){b.classList.toggle('on',picks.indexOf(b.textContent)>-1)});show(0)}
+$$('#int button').forEach(function(b){b.onclick=function(){var x=b.textContent,i=picks.indexOf(x);if(i<0)picks.push(x);else picks.splice(i,1);b.classList.toggle('on')}});
+$('#bk').onclick=function(){show(step-1)};
+$('#nx').onclick=function(){
+  if(step===0){var n=$('#iN').value.trim();if(n.length<2){$('#eN').textContent='Enter at least 2 characters.';return}$('#eN').textContent='';
+    if(!$('#iU').value)$('#iU').value=n.toLowerCase().replace(/[^a-z0-9_]/g,'')}
+  if(step===1){var u=$('#iU').value.trim().replace(/^@/,'');if(!/^[A-Za-z0-9_.]{3,20}$/.test(u)){$('#eU').textContent='Use 3–20 letters, numbers, dots or underscores.';return}$('#eU').textContent='';$('#iU').value=u}
+  if(step===4){S.name=$('#iN').value.trim();S.user=$('#iU').value.trim();S.photo=tmp;S.interests=picks.slice();S.done=true;save();ob.classList.remove('o');document.body.style.overflow='';render();scrollTo(0,0);toast('Welcome, '+S.name);return}
+  show(step+1)};
+ob.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName==='INPUT'){e.preventDefault();$('#nx').click()}});
+$('#edit').onclick=function(){openOb(true)};
+var mb=$('#mb'),mn=$('#menu');
+function tm(f){mb.classList.toggle('o',f);mn.classList.toggle('o',f);document.body.style.overflow=f?'hidden':''}
+mb.onclick=function(){tm(!mn.classList.contains('o'))};
+$$('#menu a').forEach(function(a){a.onclick=function(){tm(false)}});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in2');io.unobserve(e.target)}})},{threshold:.1});
+$$('.rv').forEach(function(e){io.observe(e)});
+var par=$('#par'),tk=false;
+addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){var y=Math.min(scrollY,900);par.style.transform='translateY('+(y*.08)+'px) scale('+(1+y/6000)+')';tk=false})},{passive:true});
+render();
+if(!S.done)openOb(false);
+})();
+</script>
+</body>
+</html>
